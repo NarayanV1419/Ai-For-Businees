@@ -1,15 +1,19 @@
---Do companies with higher automation rates actually become more productive — and does this hold true across all industries?--
-with industry_tier as (
-select industry,
-case when automation_rate < 0.33 then 'Low'
-	 when automation_rate between  0.33 and 0.66 then 'Mid'
-	 else 'High'
-end as automation_tier,
-cast(avg(productivity_gain) as decimal(10,2)) as avg_productivity_gain
+-- Which industry scaled up the number of AI deployments most rapidly between 2020 and 2030? --
+with year_avg as (
+select industry,year, round(avg(deployment_count),2) as avg_deployment
 from ai_adop
-group by automation_tier, industry
-order by industry ,automation_tier
+where year between 2020 and 2030
+group by year, industry
+), yoy as (
+select industry ,year,
+avg_deployment ,
+LAG(avg_deployment) over(partition by industry order by year) as prev_year_deployment,
+round(avg_deployment  - LAG(avg_deployment) over(partition by industry order by year) ,2) as yoy_growth
+from year_avg 
+order by industry ,year
 )
-select industry,
-avg_productivity_gain
-from industry_tier 
+select dense_rank() over(order by avg(yoy_growth)) as growth_rank, industry, round(avg(yoy_growth),2) as avg_yoy_growth
+from yoy
+where yoy_growth is not null
+group by industry 
+order by growth_rank 
