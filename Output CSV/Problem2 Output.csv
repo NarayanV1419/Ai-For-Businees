@@ -1,0 +1,31 @@
+"industry","training_tier","industry_avg_adoption_level"
+Agriculture,High,0.82
+Education,High,0.81
+Energy,High,0.82
+Financial Services,High,0.81
+Healthcare,High,0.82
+Logistics,High,0.81
+Manufacturing,High,0.81
+Retail,High,0.82
+Technology,High,0.82
+Telecom,High,0.81
+Agriculture,Low,0.23
+Education,Low,0.23
+Energy,Low,0.22
+Financial Services,Low,0.23
+Healthcare,Low,0.22
+Logistics,Low,0.23
+Manufacturing,Low,0.22
+Retail,Low,0.23
+Technology,Low,0.23
+Telecom,Low,0.22
+Agriculture,Mid,0.53
+Education,Mid,0.53
+Energy,Mid,0.53
+Financial Services,Mid,0.53
+Healthcare,Mid,0.53
+Logistics,Mid,0.53
+Manufacturing,Mid,0.53
+Retail,Mid,0.53
+Technology,Mid,0.53
+Telecom,Mid,0.53
