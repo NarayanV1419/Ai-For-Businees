@@ -1,4 +1,4 @@
--- Q7. Do companies that invest more hours in AI training for employees reach higher AI adoption levels? --
+-- Do companies that invest more hours in AI training for employees reach higher AI adoption levels? --
 with training_tier as (select industry,employee_ai_training_hours,round(cast(ai_adoption_level as decimal),2) as ai_adoption_level,
 case when employee_ai_training_hours < 50 then 'Low'
 	 when employee_ai_training_hours between 50 and 100 then 'Mid'
